@@ -20,7 +20,7 @@ export class EmailService {
                 }),
             ].concat(
                 this.mailerService.sendMail({
-                    to: process.env.CONTACT_ADDRESS,
+                    to: process.env.CONTACT_ADDRESS_ILWM || process.env.CONTACT_ADDRESS,
                     subject: 'Neue Kontaktanfrage!',
                     template: './inlovewithmoments.request.pug',
                     context: {
