@@ -10,9 +10,10 @@ export class EmailService {
         await Promise.all(
             [
                 this.mailerService.sendMail({
+                    from: `'Daniel Hübner' <${process.env.CONTACT_ADDRESS_LIONDANY}>`,
                     to: data.email,
                     subject: 'Thank you for your contact request!', // Subject line
-                    template: './liondany.response.pug',
+                    template: __dirname + '/assets/templates/liondany.response.pug',
                     context: {
                         name: data.name,
                     },
@@ -20,9 +21,10 @@ export class EmailService {
                 }),
             ].concat(
                 this.mailerService.sendMail({
+                    from: `'Daniel Hübner' <${process.env.CONTACT_ADDRESS_LIONDANY}>`,
                     to: process.env.CONTACT_ADDRESS_LIONDANY || process.env.CONTACT_ADDRESS,
                     subject: 'New contact request!',
-                    template: './liondany.request.pug',
+                    template: __dirname + '/assets/templates/liondany.request.pug',
                     context: {
                         name: data.name,
                         email: data.email,
