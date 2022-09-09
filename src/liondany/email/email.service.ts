@@ -11,24 +11,22 @@ export class EmailService {
             [
                 this.mailerService.sendMail({
                     to: data.email,
-                    subject: 'Vielen Dank für deine Nachricht!', // Subject line
-                    template: './inlovewithmoments.response.pug',
+                    subject: 'Thank you for your contact request!', // Subject line
+                    template: './liondany.response.pug',
                     context: {
                         name: data.name,
                     },
-                    attachments: [{ filename: 'logo.png', path: `${__dirname}/assets/img/logo.png`, cid: 'logo1' }],
+                    attachments: [{ filename: 'logo.jpg', path: `${__dirname}/assets/img/logo.jpg`, cid: 'logo1' }],
                 }),
             ].concat(
                 this.mailerService.sendMail({
-                    to: process.env.CONTACT_ADDRESS_ILWM || process.env.CONTACT_ADDRESS,
-                    subject: 'Neue Kontaktanfrage!',
-                    template: './inlovewithmoments.request.pug',
+                    to: process.env.CONTACT_ADDRESS_LIONDANY || process.env.CONTACT_ADDRESS,
+                    subject: 'New contact request!',
+                    template: './liondany.request.pug',
                     context: {
                         name: data.name,
                         email: data.email,
                         phone: data.phone,
-                        category: data.selectedCategory,
-                        date: data.selectedDate,
                         message: data.message,
                     },
                 }),
